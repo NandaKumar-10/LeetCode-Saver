@@ -1,21 +1,20 @@
 let isObserving = false;
 document.addEventListener('click', (e) => {
-    // Only monitor if a button (like 'Submit') is clicked
-    if (e.target.closest('button') && !isObserving){
+    if (e.target.closest('button') && !isObserving) {
         monitorForSuccess();
     }
 });
 
-function monitorForSuccess(){
+function monitorForSuccess() {
     isObserving = true;
     const observer = new MutationObserver((mutations) => {
-        const successElement = document.querySelector('[data-e2e-locator="submission-result-accepted-verdict"]') 
-                            || document.querySelector('.text-green-s');
+        const successElement = document.querySelector('[data-e2e-locator="submission-result-accepted-verdict"]')
+            || document.querySelector('.text-green-s');
         if (successElement) {
             const code = getCodeFromEditor();
             const title = document.title.split("-")[0].trim();
             chrome.runtime.sendMessage({
-                action:"upload_to_github",
+                action: "upload_to_github",
                 code: code,
                 problemTitle: title
             });
@@ -23,7 +22,7 @@ function monitorForSuccess(){
             isObserving = false;
         }
     });
-    observer.observe(document.body, { childList: true, subtree: true});
+    observer.observe(document.body, { childList: true, subtree: true });
 
     setTimeout(() => {
         observer.disconnect();
