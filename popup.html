@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leetcode to Github</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <h2>LeetCode To Github</h2>
+    <div class="input-group">
+        <label>Enter the Github Personal access Token: </label>
+        <input type="password" id="github_token" placeholder="ghp_...">
+    </div>
+    <div class="help-section">
+        <details>
+            <summary>❓ How to create a GitHub Token</summary>
+            <div class="instructions">
+            <ol>
+                <li>
+                <a href="https://github.com/settings/tokens/new" target="_blank">Click here</a> to open GitHub Token settings.
+                </li>
+                <li>Select <b>"Generate new token (classic)"</b>.</li>
+                <li>Give it a Note name (e.g., "LeetCode Sync").</li>
+                <li>
+                ⚠️ <b>Important:</b> Check the box for <b>repo</b> (Full control of private repositories).
+                </li>
+                <li>Scroll down, click <b>Generate token</b>.</li>
+                <li>Copy the token (starts with <code>ghp_</code>) and paste it above.</li>
+            </ol>
+            </div>
+        </details>
+    </div>
+    <div class="input-group">
+        <label>Enter the repo name:</label>
+        <input type="text" id="github_repo" placeholder="username/repo-name">
+    </div>
+    <button id="save_btn">Save</button>
+    <p id="status"></p>
+    <script src="popup.js"></script>
+</body>
+</html>
